@@ -1,11 +1,8 @@
 import React from 'react';
+import { Outlet } from 'react-router';
 
 const Router = () => {
-  return (
-    <div>
-      <div>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
-    </div>
-  );
+  return <Outlet />;
 };
 
 export default Router;
