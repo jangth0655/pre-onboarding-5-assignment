@@ -18,24 +18,29 @@ const client = new Client();
 const searchApi = new SearchApi(client);
 
 export const TermProvider: React.FC<Props> = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [term, setTerm] = useState('');
-  const [terms, setTerms] = useState<Sick[]>([{ sickCd: '', sickNm: '' }]);
+  const [terms, setTerms] = useState<Sick[]>([]);
 
   const search = (term: string) => {
     setTerm(term);
   };
 
+  function timing() {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+  }
+
+  async function searchAPICall() {
+    const result = await searchApi.sickSearch(term);
+    setTerms([...result.slice(0, 10)]);
+  }
+
   useEffect(() => {
     if (!term) return;
-    setTimeout(() => {
-      setIsLoading(true);
-    }, 500);
-    if (isLoading) {
-      searchApi
-        .sickSearch(term)
-        .then((term) => setTerms([...term.slice(0, 10)]));
-    }
+    timing();
+    !isLoading && searchAPICall();
   }, [searchApi, term, isLoading]);
 
   return (
