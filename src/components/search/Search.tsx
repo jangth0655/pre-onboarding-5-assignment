@@ -1,16 +1,13 @@
-import Layout from 'components/Layout';
-import SearchForm from './form/SearchForm';
+import SearchForm from './form/Form';
 import S from './styles';
+import Title from './title/Title';
 
 const Search = () => {
   return (
-    <Layout>
-      <S.TitleContainer>
-        <S.Title>국내 모든 임상시험 검색하고</S.Title>
-        <S.Title>온라인으로 참여하기</S.Title>
-      </S.TitleContainer>
+    <S.Section>
+      <Title />
       <SearchForm />
-    </Layout>
+    </S.Section>
   );
 };
 export default Search;

@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
-const TitleContainer = styled.div`
-  width: 100%;
-  text-align: center;
-  margin-bottom: 50px;
-`;
-const Title = styled.h1`
-  font-weight: bold;
-  font-size: 2.5rem;
+const Section = styled.section`
+  background-color: #c6e3fd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  padding-top: 50px;
+  min-height: 100vh;
+  border: 1px solid black;
 `;
 
 const S = {
-  TitleContainer,
-  Title,
+  Section,
 };
 
 export default S;

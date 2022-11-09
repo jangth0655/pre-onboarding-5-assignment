@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const BoardContainer = styled.ul`
   width: 100%;
-  height: 600px;
   background-color: white;
   border-radius: 10px;
   padding: 40px 20px;

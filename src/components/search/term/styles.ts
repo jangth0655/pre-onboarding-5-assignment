@@ -4,7 +4,6 @@ const TermContainer = styled.div`
   width: 100%;
   display: flex;
   font-size: 1.5rem;
-
   margin-bottom: 1.2rem;
   &:last-child {
     margin-bottom: 0;
@@ -20,7 +19,7 @@ const IconBox = styled.div`
 const Term = styled.h1`
   display: flex;
   align-items: center;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 `;
 
 const S = {
