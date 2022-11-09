@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const BoardContainer = styled.ul`
-  width: 100%;
-  background-color: white;
+const Container = styled.div`
   border-radius: 10px;
-  padding: 40px 20px;
+  background-color: white;
+  padding: 20px 30px;
 `;
+
 const SuggestedTermContainer = styled.div`
   margin-bottom: 1rem;
 `;
@@ -15,9 +15,9 @@ const SuggestedTerm = styled.h1`
 `;
 
 const S = {
-  BoardContainer,
   SuggestedTermContainer,
   SuggestedTerm,
+  Container,
 };
 
 export default S;

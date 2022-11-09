@@ -3,11 +3,9 @@
 
 import React, { useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
-import SearchBoard from '../board/SearchBoard';
 import S from './styles';
 
-const SearchForm = () => {
-  const [active, setActive] = useState(false);
+const SearchForm: React.FC = () => {
   const [term, setTerm] = useState('');
 
   const handleInputEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +13,6 @@ const SearchForm = () => {
       currentTarget: { value },
     } = e;
     setTerm(value);
-    setActive(true);
   };
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
@@ -23,24 +20,19 @@ const SearchForm = () => {
     setTerm('');
   };
 
-  console.log(active);
   return (
-    <>
-      <S.Form onSubmit={handleSubmit}>
-        <S.IconBox>
-          <BiSearch />
-        </S.IconBox>
-        <S.Input
-          onClick={() => setActive(true)}
-          onChange={handleInputEvent}
-          value={term}
-          type="text"
-          placeholder="질환명을 입력해주세요."
-        />
-        <S.Button>검색</S.Button>
-      </S.Form>
-      {active ? <SearchBoard /> : ''}
-    </>
+    <S.Form onSubmit={handleSubmit}>
+      <S.IconBox>
+        <BiSearch />
+      </S.IconBox>
+      <S.Input
+        onChange={handleInputEvent}
+        value={term}
+        type="text"
+        placeholder="질환명을 입력해주세요."
+      />
+      <S.Button>검색</S.Button>
+    </S.Form>
   );
 };
 export default SearchForm;

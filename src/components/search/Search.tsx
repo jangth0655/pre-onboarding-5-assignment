@@ -1,13 +1,15 @@
+import Layout from 'components/Layout';
+import SearchBoard from './board/SearchBoard';
 import SearchForm from './form/Form';
-import S from './styles';
 import Title from './title/Title';
 
 const Search = () => {
   return (
-    <S.Section>
+    <Layout>
       <Title />
       <SearchForm />
-    </S.Section>
+      <SearchBoard />
+    </Layout>
   );
 };
 export default Search;
