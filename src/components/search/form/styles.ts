@@ -4,6 +4,7 @@ const Form = styled.form`
   width: 100%;
   position: relative;
   margin-bottom: 10px;
+  z-index: 10;
 `;
 
 const Input = styled.input`

@@ -7,8 +7,15 @@ const FormContainer = styled.section`
   padding-top: 50px;
 `;
 
+const BoardContainer = styled.div`
+  min-height: 100vh;
+  border: 1px solid black;
+  z-index: -1;
+`;
+
 const S = {
   FormContainer,
+  BoardContainer,
 };
 
 export default S;

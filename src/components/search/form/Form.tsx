@@ -5,7 +5,11 @@ import React, { useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
 import S from './styles';
 
-const SearchForm: React.FC = () => {
+interface Props {
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const SearchForm: React.FC<Props> = ({ setActive }) => {
   const [term, setTerm] = useState('');
 
   const handleInputEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,6 +30,7 @@ const SearchForm: React.FC = () => {
         <BiSearch />
       </S.IconBox>
       <S.Input
+        onClick={() => setActive(true)}
         onChange={handleInputEvent}
         value={term}
         type="text"
