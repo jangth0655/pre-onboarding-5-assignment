@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     outline: inherit;
   }
+  input { 
+    outline: 0;
+    border: 0;
+  }
 `;
 
 export default GlobalStyle;

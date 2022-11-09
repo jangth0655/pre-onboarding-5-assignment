@@ -1,4 +1,6 @@
+import Search from 'components/search/Search';
+
 const Home = () => {
-  return <h1>Home</h1>;
+  return <Search />;
 };
 export default Home;
