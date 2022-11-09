@@ -1,4 +1,5 @@
 import Layout from 'components/Layout';
+import { TermProvider } from 'context/termContext';
 import { useState } from 'react';
 import SearchBoard from './board/SearchBoard';
 import SearchForm from './form/Form';
@@ -10,8 +11,10 @@ const Search = () => {
   return (
     <Layout>
       <Title />
-      <SearchForm setActive={setActive} />
-      {active && <SearchBoard active={active} />}
+      <TermProvider>
+        <SearchForm setActive={setActive} />
+        {active && <SearchBoard active={active} />}
+      </TermProvider>
     </Layout>
   );
 };

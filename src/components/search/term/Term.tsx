@@ -3,7 +3,7 @@ import { BiSearch } from 'react-icons/bi';
 import S from './styles';
 
 interface Props {
-  term: number;
+  term: string;
 }
 
 const Term: React.FC<Props> = ({ term }) => {

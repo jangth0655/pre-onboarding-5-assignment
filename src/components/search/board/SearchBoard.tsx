@@ -1,21 +1,22 @@
+import { useTerm } from 'hooks/useTerm';
 import Term from '../term/Term';
 import S from './styles';
-
-const array = [1, 2];
 
 interface Props {
   active: boolean;
 }
 
 const SearchBoard: React.FC<Props> = ({ active }) => {
+  const { terms } = useTerm();
+
   return (
     <S.Container>
       <S.SuggestedTermContainer>
         <S.SuggestedTerm>추천 검색어</S.SuggestedTerm>
       </S.SuggestedTermContainer>
       <ul>
-        {array.map((v) => (
-          <Term key={v} term={v} />
+        {terms.map((term) => (
+          <Term key={term.sickCd} term={term.sickNm} />
         ))}
       </ul>
     </S.Container>

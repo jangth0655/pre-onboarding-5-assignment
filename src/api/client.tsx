@@ -23,6 +23,6 @@ export default class Client implements SearchService {
   }
 
   sickSearch = async (params: SearchParams) => {
-    return this.client.get<Sick>('sick', params);
+    return this.client.get<Sick[]>('sick', params);
   };
 }
