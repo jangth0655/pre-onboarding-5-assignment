@@ -20,6 +20,7 @@ const Term = styled.h1`
   display: flex;
   align-items: center;
   padding: 0.5rem 0;
+  font-size: 1rem;
 `;
 
 const S = {

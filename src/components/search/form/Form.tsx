@@ -1,5 +1,4 @@
-// 단어 -> 보드 : 상태관리가 필요하다. (context api)
-// ?클릭 -> 전체 레이아웃, 타이틀 클릭시 active 활성황 여부  (context api)
+// 클릭 -> 전체 레이아웃, 타이틀 클릭시 active 활성황 여부
 
 import { useTerm } from 'hooks/useTerm';
 import React, { useMemo, useState } from 'react';

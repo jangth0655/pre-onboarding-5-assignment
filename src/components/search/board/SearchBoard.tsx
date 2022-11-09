@@ -8,6 +8,7 @@ interface Props {
 
 const SearchBoard: React.FC<Props> = ({ active }) => {
   const { terms } = useTerm();
+  const emptyTerms = terms.length === 0;
 
   return (
     <S.Container>
@@ -15,9 +16,9 @@ const SearchBoard: React.FC<Props> = ({ active }) => {
         <S.SuggestedTerm>추천 검색어</S.SuggestedTerm>
       </S.SuggestedTermContainer>
       <ul>
-        {terms.map((term) => (
-          <Term key={term.sickCd} term={term.sickNm} />
-        ))}
+        {emptyTerms
+          ? '입력해주세요.'
+          : terms.map((term) => <Term key={term.sickCd} term={term.sickNm} />)}
       </ul>
     </S.Container>
   );
