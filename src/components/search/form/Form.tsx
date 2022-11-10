@@ -10,21 +10,23 @@ interface Props {
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+const recentlyWords = localData.previewData();
 const SearchForm: React.FC<Props> = ({ setActive }) => {
   const [term, setTerm] = useState('');
   const { search } = useTerm();
-  const { setStore } = useStore();
+  const { isStore } = useStore();
 
   const handleInputEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       currentTarget: { value },
     } = e;
-    localData.previewData(value) === value ? setStore() : search(value);
+    recentlyWords.includes(value) ? isStore() : search(value);
     setTerm(value);
   };
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setTerm('');
     if (!term && term === '') return;
     localData.addData(term);
   };

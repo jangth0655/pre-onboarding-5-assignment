@@ -18,6 +18,7 @@ export const InputContext = createContext<Term | null>(null);
 const client = new Client();
 const searchApi = new SearchApi(client);
 
+const recentlyWords = localData.previewData();
 export const InputProvider: React.FC<Props> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [term, setTerm] = useState('');
@@ -38,12 +39,14 @@ export const InputProvider: React.FC<Props> = ({ children }) => {
     setTerms([...result.slice(0, 10)]);
   }
 
+  const storedWord = recentlyWords.includes(term);
+
   useEffect(() => {
     if (!term) return;
     timing();
-    // console.log('no api');
-    if (!isLoading && localData.previewData(term) !== term) {
-      // console.log('call api');
+
+    if (!isLoading && !storedWord) {
+      console.info('call api');
       searchAPICall();
     }
   }, [searchApi, term, isLoading]);

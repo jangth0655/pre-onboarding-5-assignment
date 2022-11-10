@@ -1,5 +1,6 @@
 import { useTerm } from 'hooks/useTerm';
 import Term from '../term/Term';
+import BoardSubTitle from './boardSubTitle/BoardSubTitle';
 import S from './styles';
 
 interface Props {
@@ -12,12 +13,10 @@ const SearchBoard: React.FC<Props> = ({ active }) => {
 
   return (
     <S.Container>
-      <S.SuggestedTermContainer>
-        <S.SuggestedTerm>추천 검색어</S.SuggestedTerm>
-      </S.SuggestedTermContainer>
+      <BoardSubTitle title="추천 검색어" />
       <ul>
         {emptyTerms
-          ? '입력해주세요.'
+          ? '검색어 없음'
           : terms.map((term) => <Term key={term.sickCd} term={term.sickNm} />)}
       </ul>
     </S.Container>

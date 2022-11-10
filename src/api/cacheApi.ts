@@ -1,11 +1,13 @@
 class CacheApi {
-  addData = (keyword: string) => {
-    sessionStorage.setItem(keyword, keyword);
+  addData = (word: string) => {
+    const words: string[] = [...this.previewData(), word];
+    const stringifyWord = JSON.stringify(words);
+    sessionStorage.setItem('recentlyWord', stringifyWord);
   };
 
-  previewData = (keyword: string) => {
-    const data = sessionStorage.getItem(keyword);
-    return data;
+  previewData = (): string[] => {
+    const data = sessionStorage.getItem('recentlyWord');
+    return JSON.parse(data || JSON.stringify([]));
   };
 }
 
