@@ -11,6 +11,7 @@ interface Props {
 type Term = {
   search: (term: string) => void;
   terms: Sick[];
+  term: string;
 };
 
 export const InputContext = createContext<Term | null>(null);
@@ -52,7 +53,7 @@ export const InputProvider: React.FC<Props> = ({ children }) => {
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <InputContext.Provider value={{ search, terms }}>
+    <InputContext.Provider value={{ search, terms, term }}>
       {children}
     </InputContext.Provider>
   );

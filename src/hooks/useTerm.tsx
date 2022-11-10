@@ -9,6 +9,7 @@ export const useTerm = () => {
   return {
     search: state.search,
     terms: state.terms,
+    term: state.term,
   };
 };
 

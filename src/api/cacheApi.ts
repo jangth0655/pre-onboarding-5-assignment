@@ -11,5 +11,5 @@ class CacheApi {
   };
 }
 
-const localData = new CacheApi();
-export default localData;
+const storage = new CacheApi();
+export default storage;
