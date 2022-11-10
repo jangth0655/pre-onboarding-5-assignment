@@ -46,7 +46,7 @@ export const InputProvider: React.FC<Props> = ({ children }) => {
     if (!word) return;
     timing();
     if (!isLoading && !storedWord) {
-      console.log('call api');
+      // console.log('call api');
       searchAPICall(word);
     }
   }, [searchApi, word, isLoading]);
