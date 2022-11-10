@@ -1,5 +1,7 @@
 import Layout from 'components/Layout';
-import { TermProvider } from 'context/termContext';
+import { InputProvider } from 'context/InputContext';
+import { CheckStoreProvider } from 'context/IsStoreContext';
+
 import { useState } from 'react';
 import SearchBoard from './board/SearchBoard';
 import SearchForm from './form/Form';
@@ -11,10 +13,12 @@ const Search = () => {
   return (
     <Layout>
       <Title />
-      <TermProvider>
-        <SearchForm setActive={setActive} />
-        {active && <SearchBoard active={active} />}
-      </TermProvider>
+      <CheckStoreProvider>
+        <InputProvider>
+          <SearchForm setActive={setActive} />
+          {active && <SearchBoard active={active} />}
+        </InputProvider>
+      </CheckStoreProvider>
     </Layout>
   );
 };

@@ -1,4 +1,5 @@
-import Client from 'api/client';
+import localData from 'api/cacheApi';
+import Client from 'api/clientApi';
 import SearchApi from 'api/searchApi';
 import { Sick } from 'model/interface';
 import React, { createContext, useEffect, useState } from 'react';
@@ -12,12 +13,12 @@ type Term = {
   terms: Sick[];
 };
 
-export const TermContext = createContext<Term | null>(null);
+export const InputContext = createContext<Term | null>(null);
 
 const client = new Client();
 const searchApi = new SearchApi(client);
 
-export const TermProvider: React.FC<Props> = ({ children }) => {
+export const InputProvider: React.FC<Props> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [term, setTerm] = useState('');
   const [terms, setTerms] = useState<Sick[]>([]);
@@ -40,13 +41,17 @@ export const TermProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     if (!term) return;
     timing();
-    !isLoading && searchAPICall();
+    // console.log('no api');
+    if (!isLoading && localData.previewData(term) !== term) {
+      // console.log('call api');
+      searchAPICall();
+    }
   }, [searchApi, term, isLoading]);
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <TermContext.Provider value={{ search, terms }}>
+    <InputContext.Provider value={{ search, terms }}>
       {children}
-    </TermContext.Provider>
+    </InputContext.Provider>
   );
 };

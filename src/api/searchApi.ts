@@ -1,15 +1,16 @@
-import Client from './client';
+import Client from './clientApi';
 
 export default class SearchApi {
   constructor(private apiClient: Client) {}
 
   sickSearch = async (keyword: string) => {
-    return this.apiClient
-      .sickSearch({
+    const result = (
+      await this.apiClient.sickSearch({
         params: {
           q: keyword,
         },
       })
-      .then((res) => res.data);
+    ).data;
+    return result;
   };
 }

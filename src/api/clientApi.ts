@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosAdapter } from 'axios';
 import { Sick } from 'model/interface';
 
 interface SearchService {
@@ -19,10 +19,13 @@ export default class Client implements SearchService {
   constructor() {
     this.client = axios.create({
       baseURL,
+      headers: { 'Cache-Control': 'max-age=31536000' },
     });
   }
 
   sickSearch = async (params: SearchParams) => {
-    return this.client.get<Sick[]>('sick', params);
+    return this.client.get<Sick[]>('sick', {
+      ...params,
+    });
   };
 }
