@@ -25,19 +25,8 @@ export const InputProvider: React.FC<Props> = ({ children }) => {
   const [word, setWord] = useState('');
   const [words, setWords] = useState<Sick[]>([]);
 
-  const search = (term: string) => {
+  function search(term: string) {
     setWord(term);
-  };
-
-  function timing() {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-  }
-
-  async function searchAPICall(term: string) {
-    const result = await searchApi.sickSearch(term);
-    setWords([...result.slice(0, 10)]);
   }
 
   const storedWord = recentlyWords.includes(word);
@@ -46,10 +35,22 @@ export const InputProvider: React.FC<Props> = ({ children }) => {
     if (!word) return;
     timing();
     if (!isLoading && !storedWord) {
-      // console.log('call api');
+      console.info('call api');
       searchAPICall(word);
+      setIsLoading(true);
     }
   }, [searchApi, word, isLoading]);
+
+  function timing() {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+  }
+
+  async function searchAPICall(term: string) {
+    const result = await searchApi.sickSearch(term);
+    setWords([...result.slice(0, 10)]);
+  }
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values

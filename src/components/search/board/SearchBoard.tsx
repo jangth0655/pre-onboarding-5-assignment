@@ -5,11 +5,11 @@ import RecentlyBoard from '../recentlyBoard/RecentlyBoard';
 import S from './styles';
 
 interface Props {
-  active: boolean;
+  showBoarder: boolean;
 }
 
 const recentlyWords = localData.previewData();
-const SearchBoard: React.FC<Props> = ({ active }) => {
+const SearchBoard: React.FC<Props> = ({ showBoarder }) => {
   const { word } = useWord();
   const isRecentlyWords = recentlyWords.includes(word);
 

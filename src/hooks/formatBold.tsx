@@ -1,13 +1,14 @@
 export function makeBold(text: string, word: string) {
-  const certain = text.split('').map((str, i) =>
-    str === word ? (
+  const textSplit = text.split('');
+  const filterBoldText = textSplit.map((string, i) =>
+    string === word ? (
       // eslint-disable-next-line react/no-array-index-key
       <b key={i} style={{ fontWeight: 'bold' }}>
         {word}
       </b>
     ) : (
-      str
+      string
     )
   );
-  return certain;
+  return filterBoldText;
 }

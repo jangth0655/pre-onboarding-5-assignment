@@ -8,15 +8,15 @@ import SearchForm from './form/Form';
 import Title from './title/Title';
 
 const Search = () => {
-  const [active, setActive] = useState(false);
+  const [showBoarder, setShowBoarder] = useState(false);
 
   return (
     <Layout>
       <Title />
       <CheckStoreProvider>
         <InputProvider>
-          <SearchForm setActive={setActive} />
-          {active && <SearchBoard active={active} />}
+          <SearchForm setShowBoarder={setShowBoarder} />
+          {showBoarder && <SearchBoard showBoarder={showBoarder} />}
         </InputProvider>
       </CheckStoreProvider>
     </Layout>

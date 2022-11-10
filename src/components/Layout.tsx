@@ -6,9 +6,10 @@ interface Props {
 }
 
 const Section = styled.section`
+  max-width: 1024px;
+  margin: auto;
   padding: 10px 15px;
   padding-top: 40px;
-  background-color: #c6e3fd;
   min-height: 100vh;
 `;
 

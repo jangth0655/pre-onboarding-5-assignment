@@ -5,11 +5,11 @@ import { BiSearch } from 'react-icons/bi';
 import S from './styles';
 
 interface Props {
-  setActive: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowBoarder: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SearchForm: React.FC<Props> = ({ setActive }) => {
-  const [term, setTerm] = useState('');
+const SearchForm: React.FC<Props> = ({ setShowBoarder }) => {
+  const [word, setWord] = useState('');
   const { search } = useWord();
 
   const handleInputEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,14 +17,14 @@ const SearchForm: React.FC<Props> = ({ setActive }) => {
       currentTarget: { value },
     } = e;
     search(value);
-    setTerm(value);
+    setWord(value);
   };
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setTerm('');
-    if (!term && term === '') return;
-    storage.addData(term);
+    setWord('');
+    if (!word && word === '') return;
+    storage.addData(word);
   };
 
   return (
@@ -33,9 +33,9 @@ const SearchForm: React.FC<Props> = ({ setActive }) => {
         <BiSearch />
       </S.IconBox>
       <S.Input
-        onClick={() => setActive(true)}
+        onClick={() => setShowBoarder((prev) => !prev)}
         onChange={handleInputEvent}
-        value={term}
+        value={word}
         type="text"
         placeholder="질환명을 입력해주세요."
       />
