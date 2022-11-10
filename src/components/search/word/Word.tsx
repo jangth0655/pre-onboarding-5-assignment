@@ -5,17 +5,20 @@ import S from './styles';
 
 interface Props {
   text: string;
+  active?: boolean;
 }
 
-const Word: React.FC<Props> = ({ text }) => {
+const Word: React.FC<Props> = ({ text, active }) => {
   const { word } = useWord();
 
   return (
-    <S.TermContainer>
+    <S.TermContainer active={active}>
       <S.IconBox>
         <BiSearch />
       </S.IconBox>
-      <S.TermContainer>{makeBold(text, word)}</S.TermContainer>
+      <S.TermContainer>
+        <S.Term>{makeBold(text, word)}</S.Term>
+      </S.TermContainer>
     </S.TermContainer>
   );
 };
