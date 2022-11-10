@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-const TermContainer = styled.div`
+const TermContainer = styled.div<{ active?: boolean }>`
   width: 100%;
   display: flex;
   font-size: 1.5rem;
   margin-bottom: 1.2rem;
+  background-color: ${(props) => (props.active ? 'rgb(243 244 246)' : '')};
   &:last-child {
     margin-bottom: 0;
   }
