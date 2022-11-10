@@ -34,7 +34,7 @@ export const InputProvider: React.FC<Props> = ({ children }) => {
     }, 500);
   }
 
-  async function searchAPICall() {
+  async function searchAPICall(term: string) {
     const result = await searchApi.sickSearch(term);
     setTerms([...result.slice(0, 10)]);
   }
@@ -44,10 +44,9 @@ export const InputProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     if (!term) return;
     timing();
-
     if (!isLoading && !storedWord) {
-      console.info('call api');
-      searchAPICall();
+      console.log('call api');
+      searchAPICall(term);
     }
   }, [searchApi, term, isLoading]);
 

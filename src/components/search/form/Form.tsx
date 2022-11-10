@@ -20,7 +20,7 @@ const SearchForm: React.FC<Props> = ({ setActive }) => {
     const {
       currentTarget: { value },
     } = e;
-    recentlyWords.includes(value) ? isStore() : search(value);
+    search(value);
     setTerm(value);
   };
 

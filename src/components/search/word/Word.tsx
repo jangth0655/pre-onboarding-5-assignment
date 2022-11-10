@@ -1,19 +1,18 @@
-import React from 'react';
 import { BiSearch } from 'react-icons/bi';
 import S from './styles';
 
 interface Props {
-  term: string;
+  word: string;
 }
 
-const Term: React.FC<Props> = ({ term }) => {
+const Word: React.FC<Props> = ({ word }) => {
   return (
     <S.TermContainer>
       <S.IconBox>
         <BiSearch />
       </S.IconBox>
-      <S.Term>{term}</S.Term>
+      <S.Term>{word}</S.Term>
     </S.TermContainer>
   );
 };
-export default Term;
+export default Word;
