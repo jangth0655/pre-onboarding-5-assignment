@@ -1,5 +1,5 @@
 import localData from 'api/cacheApi';
-import { useTerm } from 'hooks/useTerm';
+import { useWord } from 'hooks/useWord';
 import CurrentlyBoard from '../currentlyBoard/CurrentlyBoard';
 import RecentlyBoard from '../recentlyBoard/RecentlyBoard';
 import S from './styles';
@@ -10,8 +10,8 @@ interface Props {
 
 const recentlyWords = localData.previewData();
 const SearchBoard: React.FC<Props> = ({ active }) => {
-  const { term } = useTerm();
-  const isRecentlyWords = recentlyWords.includes(term);
+  const { word } = useWord();
+  const isRecentlyWords = recentlyWords.includes(word);
 
   return (
     <S.Container>

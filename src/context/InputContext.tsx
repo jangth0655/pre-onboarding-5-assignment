@@ -10,8 +10,8 @@ interface Props {
 
 type Term = {
   search: (term: string) => void;
-  terms: Sick[];
-  term: string;
+  words: Sick[];
+  word: string;
 };
 
 export const InputContext = createContext<Term | null>(null);
@@ -22,11 +22,11 @@ const searchApi = new SearchApi(client);
 const recentlyWords = localData.previewData();
 export const InputProvider: React.FC<Props> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [term, setTerm] = useState('');
-  const [terms, setTerms] = useState<Sick[]>([]);
+  const [word, setWord] = useState('');
+  const [words, setWords] = useState<Sick[]>([]);
 
   const search = (term: string) => {
-    setTerm(term);
+    setWord(term);
   };
 
   function timing() {
@@ -37,23 +37,23 @@ export const InputProvider: React.FC<Props> = ({ children }) => {
 
   async function searchAPICall(term: string) {
     const result = await searchApi.sickSearch(term);
-    setTerms([...result.slice(0, 10)]);
+    setWords([...result.slice(0, 10)]);
   }
 
-  const storedWord = recentlyWords.includes(term);
+  const storedWord = recentlyWords.includes(word);
 
   useEffect(() => {
-    if (!term) return;
+    if (!word) return;
     timing();
     if (!isLoading && !storedWord) {
       console.log('call api');
-      searchAPICall(term);
+      searchAPICall(word);
     }
-  }, [searchApi, term, isLoading]);
+  }, [searchApi, word, isLoading]);
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <InputContext.Provider value={{ search, terms, term }}>
+    <InputContext.Provider value={{ search, words, word }}>
       {children}
     </InputContext.Provider>
   );

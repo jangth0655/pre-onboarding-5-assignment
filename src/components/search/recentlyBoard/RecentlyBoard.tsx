@@ -8,7 +8,7 @@ const RecentlyBoard = () => {
     <ul>
       <BoardSubTitle title="최근 검색어" />
       {recentlyWords.map((word) => (
-        <Word key={word} word={word} />
+        <Word key={word} text={word} />
       ))}
     </ul>
   );

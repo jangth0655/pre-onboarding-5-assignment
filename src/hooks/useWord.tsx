@@ -2,14 +2,14 @@ import { InputContext } from 'context/InputContext';
 import { IsStoreContext } from 'context/IsStoreContext';
 import { useContext } from 'react';
 
-export const useTerm = () => {
+export const useWord = () => {
   const state = useContext(InputContext);
   if (!state) throw new Error('Context의 Input State가 존재하지 않습니다.');
 
   return {
     search: state.search,
-    terms: state.terms,
-    term: state.term,
+    words: state.words,
+    word: state.word,
   };
 };
 

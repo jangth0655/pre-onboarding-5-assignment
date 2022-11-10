@@ -1,5 +1,5 @@
 import storage from 'api/cacheApi';
-import { useTerm } from 'hooks/useTerm';
+import { useWord } from 'hooks/useWord';
 import React, { useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
 import S from './styles';
@@ -10,7 +10,7 @@ interface Props {
 
 const SearchForm: React.FC<Props> = ({ setActive }) => {
   const [term, setTerm] = useState('');
-  const { search } = useTerm();
+  const { search } = useWord();
 
   const handleInputEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
