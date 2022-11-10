@@ -1,26 +1,24 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 interface Props {
   targetKey?: string;
 }
 
-type KeyBoard = 'ArrowDown' | 'ArrowUp';
-
 const useKeyPress = ({ targetKey }: Props) => {
-  const [keyPressed, setKeyPressed] = useState<KeyBoard>();
+  const [keyPressed, setKeyPressed] = useState(false);
 
-  const downHandler = useCallback((event: KeyboardEvent) => {
+  function downHandler(event: KeyboardEvent) {
     const { key } = event;
     if (key === targetKey) {
-      setKeyPressed('ArrowDown');
+      setKeyPressed(true);
     }
-  }, []);
+  }
 
   const upHandler = (event: KeyboardEvent) => {
     const { key } = event;
     if (key === targetKey) {
-      setKeyPressed('ArrowUp');
+      setKeyPressed(false);
     }
   };
 
